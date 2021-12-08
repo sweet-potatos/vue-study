@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Student from './components/Student.vue'
-import Teacher from './components/Teacher.vue'
+import Student from './Student.vue'
+import Teacher from './Teacher.vue'
 
 export default {
   name: 'School',

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <School />
+    <MixinDemo />
   </div>
 </template>
 
 <script>
-import School from './study/School.vue'
+import MixinDemo from './study/mixinDemo/MixinDemo'
 
 export default {
   name: 'App',
   components: {
-    School
+    MixinDemo
   }
 }
 </script>
