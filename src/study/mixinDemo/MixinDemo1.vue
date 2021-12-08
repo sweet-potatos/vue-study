@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ name }}</p>
+    <p>{{ name | mySliceGlobal }}</p>
     <p>{{ age }}</p>
     <button @click="showName">触发点击事件</button>
   </div>
@@ -8,14 +8,13 @@
 
 <script>
 import { mixinTest } from './mixin'
-console.log('mixinTest', mixinTest)
 
 export default {
   name: 'MinxinDemo1',
   mixins: [mixinTest],
   data() {
     return {
-      name: '张三',
+      name: '张三123456789',
       age: 20
     }
   }

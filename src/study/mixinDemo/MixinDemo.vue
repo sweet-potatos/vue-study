@@ -1,6 +1,7 @@
 <template>
   <div>
     <MixinDemo1 />
+    <hr>
     <MixinDemo2 />
   </div>
 </template>

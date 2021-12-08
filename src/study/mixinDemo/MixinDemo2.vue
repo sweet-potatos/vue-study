@@ -3,6 +3,8 @@
     <p>{{ name }}</p>
     <p>{{ age }}</p>
     <button @click="showName">触发点击事件</button>
+    <br>
+    <input v-fbind:value="name" type="text">
   </div>
 </template>
 

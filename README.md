@@ -78,3 +78,28 @@ cli全称 command line interface (命令行接口工具)
 1.当组件和混入对象含有同名选项时，这些选项将以恰当的方式进行“合并”。比如，数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先。
 2.同名钩子函数将合并为一个数组，因此都将被调用。另外，混入对象的钩子将在组件自身钩子之前调用。
 ```
+
+## 插件
+```
+功能: 用于增强Vue
+本质: 包含install方法的一个对象，install的第一个参数是Vue，第二个及以后的参数是插件使用者传递的数据
+
+自定义一个插件:
+  对象.install = function (Vue, options) {
+    1.添加全局过滤器
+    Vue.filter(...)
+
+    2.添加全局指令
+    Vue.directive(...)
+
+    3.配置全局混入
+    Vue.mixin(...)
+
+    4.添加实例方法
+    Vue.prototype.$myMethod = function () {}
+    Vue.prototype.$myProperty = xxx
+  }
+
+使用插件
+  Vue.use()
+```
