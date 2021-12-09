@@ -103,3 +103,12 @@ cli全称 command line interface (命令行接口工具)
 使用插件
   Vue.use()
 ```
+
+## scoped样式
+```
+作用: 让样式在局部生效，防止冲突
+写法: <style scoped>
+
+<style scoped lang="less">
+lang指定用那种预编译语言，如果不写<style>里面默认写css
+```
