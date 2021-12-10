@@ -4,7 +4,7 @@
       <input type="checkbox">
     </label>
     <span>
-      <span>已完成0</span> / 全部2
+      <span>已完成{{ checkedNum }}</span> / 全部{{ total }}
     </span>
     <button class="btn btn-danger">清除已完成任务</button>
   </div>
@@ -12,7 +12,19 @@
 
 <script>
 export default {
-  name: 'MyFooter'
+  name: 'MyFooter',
+  props: ['listData'],
+  computed: {
+    total() {
+      return this.listData.length
+    },
+    checkedNum() {
+      const num = this.listData.reduce((pre, current) => {
+        return pre + (current.isChecked ? 1 : 0)
+      }, 0)
+      return num
+    }
+  }
 }
 </script>
 

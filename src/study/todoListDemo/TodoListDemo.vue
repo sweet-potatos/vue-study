@@ -1,21 +1,44 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <MyHeader />
-      <MyList />
-      <MyFooter />
+      <MyHeader :add-method="add" />
+      <MyList :list-data="listData" :choose="choose" />
+      <MyFooter :list-data="listData" />
     </div>
   </div>
 </template>
 
 <script>
+import { nanoid } from 'nanoid'
 import MyHeader from './MyHeader.vue'
 import MyList from './MyList.vue'
 import MyFooter from './MyFooter.vue'
 
 export default {
   name: 'TodoListDemo',
-  components: { MyHeader, MyList, MyFooter }
+  components: { MyHeader, MyList, MyFooter },
+  data() {
+    return {
+      listData: [
+        { id: nanoid(), title: '做表格', isChecked: true },
+        { id: nanoid(), title: '对接口', isChecked: false },
+        { id: nanoid(), title: '联调测试', isChecked: false }
+      ]
+    }
+  },
+  methods: {
+    add(dataObj) {
+      this.listData.unshift(dataObj)
+    },
+    choose(id) {
+      console.log('id', id)
+      this.listData.forEach(item => {
+        if (item.id === id) {
+          item.isChecked = !item.isChecked
+        }
+      })
+    }
+  }
 }
 </script>
 

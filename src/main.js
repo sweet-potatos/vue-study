@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import plugin from './utils/plugin'
+// import plugin from './utils/plugin'
 
 Vue.config.productionTip = false
 
-Vue.use(plugin)
+// Vue.use(plugin)
 
 new Vue({
   render: h => h(App)
