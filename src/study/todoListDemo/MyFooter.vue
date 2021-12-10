@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-footer">
+  <div v-if="total" class="todo-footer">
     <label>
       <input type="checkbox">
     </label>

@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <MyHeader :add-method="add" />
-      <MyList :list-data="listData" :choose="choose" />
+      <MyList :list-data="listData" :choose="choose" :handle-delete="handleDelete" />
       <MyFooter :list-data="listData" />
     </div>
   </div>
@@ -31,12 +31,14 @@ export default {
       this.listData.unshift(dataObj)
     },
     choose(id) {
-      console.log('id', id)
       this.listData.forEach(item => {
         if (item.id === id) {
           item.isChecked = !item.isChecked
         }
       })
+    },
+    handleDelete(id) {
+      this.listData = this.listData.filter(item => item.id !== id)
     }
   }
 }

@@ -6,14 +6,14 @@
       <!-- <input v-model="listItem.isChecked" type="checkbox"> -->
       <span>{{ listItem.title }}</span>
     </label>
-    <button class="btn btn-danger" style="display:none">删除</button>
+    <button class="btn btn-danger" @click="handleDelete(listItem.id)">删除</button>
   </li>
 </template>
 
 <script>
 export default {
   name: 'MyItem',
-  props: ['listItem', 'choose'],
+  props: ['listItem', 'choose', 'handleDelete'],
   // props: {
   //   listItem: Object
   // }
@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='less'>
   /*item*/
   li {
     list-style: none;
@@ -59,5 +59,12 @@ export default {
 
   li:last-child {
     border-bottom: none;
+  }
+
+  li:hover{
+    background-color: #eee;
+    button {
+      display: block
+    }
   }
 </style>
