@@ -3,7 +3,7 @@
     <div class="todo-wrap">
       <MyHeader :add-method="add" />
       <MyList :list-data="listData" :choose="choose" :handle-delete="handleDelete" />
-      <MyFooter :list-data="listData" />
+      <MyFooter :list-data="listData" :check-all="checkAll" :clear-is-checked="clearIsChecked" />
     </div>
   </div>
 </template>
@@ -39,6 +39,12 @@ export default {
     },
     handleDelete(id) {
       this.listData = this.listData.filter(item => item.id !== id)
+    },
+    checkAll(value) {
+      this.listData = this.listData.map(item => ({ ...item, isChecked: value }))
+    },
+    clearIsChecked() {
+      this.listData = this.listData.filter(item => !item.isChecked)
     }
   }
 }
