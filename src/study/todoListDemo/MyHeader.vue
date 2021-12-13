@@ -17,6 +17,7 @@ export default {
   },
   methods: {
     add() {
+      if (!this.title) return undefined
       const dataObj = { id: nanoid(), title: this.title, isChecked: false }
       this.addMethod(dataObj)
       this.title = ''

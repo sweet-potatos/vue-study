@@ -18,7 +18,7 @@ export default {
   components: { MyHeader, MyList, MyFooter },
   data() {
     return {
-      listData: localStorage.getItem('listData') || []
+      listData: JSON.parse(localStorage.getItem('listData')) || []
     }
   },
   watch: {
