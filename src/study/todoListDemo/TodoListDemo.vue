@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { nanoid } from 'nanoid'
 import MyHeader from './MyHeader.vue'
 import MyList from './MyList.vue'
 import MyFooter from './MyFooter.vue'
@@ -19,11 +18,15 @@ export default {
   components: { MyHeader, MyList, MyFooter },
   data() {
     return {
-      listData: [
-        { id: nanoid(), title: '做表格', isChecked: true },
-        { id: nanoid(), title: '对接口', isChecked: false },
-        { id: nanoid(), title: '联调测试', isChecked: false }
-      ]
+      listData: localStorage.getItem('listData') || []
+    }
+  },
+  watch: {
+    listData: {
+      deep: true,
+      handler(value) {
+        localStorage.setItem('listData', JSON.stringify(value))
+      }
     }
   },
   methods: {

@@ -20,6 +20,7 @@ export default {
       return this.listData.length
     },
     checkedNum() {
+      if (!this.listData || this.listData.length === 0) return undefined
       const num = this.listData.reduce((pre, current) => {
         return pre + (current.isChecked ? 1 : 0)
       }, 0)
