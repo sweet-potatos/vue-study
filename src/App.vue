@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <TodoListDemo />
+    <CustomEventDemo />
   </div>
 </template>
 
 <script>
-import TodoListDemo from './study/todoListDemo/TodoListDemo'
+import CustomEventDemo from './study/customEventDemo/CustomEventDemo'
 
 export default {
   name: 'App',
   components: {
-    TodoListDemo
+    CustomEventDemo
   }
 }
 </script>
