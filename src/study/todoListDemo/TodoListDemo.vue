@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <MyHeader :add-method="add" />
-      <MyList :list-data="listData" :choose="choose" :handle-delete="handleDelete" />
+      <MyList :list-data="listData" />
       <MyFooter :list-data="listData" :check-all="checkAll" :clear-is-checked="clearIsChecked" />
     </div>
   </div>
@@ -28,6 +28,13 @@ export default {
         localStorage.setItem('listData', JSON.stringify(value))
       }
     }
+  },
+  mounted() {
+    this.$bus.$on('choose', this.choose)
+    this.$bus.$on('handleDelete', this.handleDelete)
+  },
+  beforeDestroy() {
+    this.$bus.$off(['choose', 'handleDelete'])
   },
   methods: {
     add(dataObj) {

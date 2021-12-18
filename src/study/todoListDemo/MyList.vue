@@ -1,6 +1,6 @@
 <template>
   <ul class="todo-main">
-    <MyItem v-for="item in listData" :key="item.id" :list-item="item" :choose="choose" :handle-delete="handleDelete" />
+    <MyItem v-for="item in listData" :key="item.id" :list-item="item" />
   </ul>
 </template>
 
@@ -10,10 +10,7 @@ import MyItem from './MyItem'
 export default {
   name: 'MyList',
   components: { MyItem },
-  props: ['listData', 'choose', 'handleDelete']
-  // props: {
-  //   listData: Array
-  // }
+  props: ['listData']
 }
 </script>
 

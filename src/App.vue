@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <GlobalEventBusDemo />
+    <TodoListDemo />
   </div>
 </template>
 
 <script>
-import GlobalEventBusDemo from './study/globalEventBusDemo/GlobalEventBusDemo'
+import TodoListDemo from './study/todoListDemo/TodoListDemo'
 
 export default {
   name: 'App',
   components: {
-    GlobalEventBusDemo
+    TodoListDemo
   }
 }
 </script>

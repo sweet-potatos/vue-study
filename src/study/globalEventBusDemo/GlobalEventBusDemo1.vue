@@ -19,6 +19,9 @@ export default {
   mounted() {
     this.$bus.$on('passData', this.getStudentData)
   },
+  beforeDestroy() {
+    this.$bus.$off('passData')
+  },
   methods: {
     getStudentData(value) {
       console.log('value', value)

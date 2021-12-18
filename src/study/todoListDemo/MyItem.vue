@@ -13,13 +13,18 @@
 <script>
 export default {
   name: 'MyItem',
-  props: ['listItem', 'choose', 'handleDelete'],
+  props: ['listItem'],
   // props: {
   //   listItem: Object
   // }
   methods: {
     itemChoose(id) {
-      this.choose(id)
+      this.$bus.$emit('choose', id)
+    },
+    handleDelete(id) {
+      if (confirm('确定删除吗')) {
+        this.$bus.$emit('handleDelete', id)
+      }
     }
   }
 }
