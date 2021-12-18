@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     getStudentData(value) {
+      console.log('value', value)
       this.studentName = value
     }
   }

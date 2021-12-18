@@ -3,6 +3,7 @@
     <h2>学生的名字: {{ name }}</h2>
     <h2>学生的年龄: {{ age }}</h2>
     <button @click="passData">传递数据</button>
+    <button @click="destroyComponent">销毁组件</button>
   </div>
 </template>
 
@@ -15,9 +16,16 @@ export default {
       age: 20
     }
   },
+  beforeDestroy() {
+    console.log('组件已销毁')
+    this.$bus.$off('passData')
+  },
   methods: {
     passData() {
       this.$bus.$emit('passData', this.name)
+    },
+    destroyComponent() {
+      this.$destroy()
     }
   }
 }
