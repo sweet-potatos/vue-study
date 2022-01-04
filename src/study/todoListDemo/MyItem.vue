@@ -5,7 +5,7 @@
       <!-- 用v-model也能实现，但是不建议这样搞，原则上数据在自己组件中才用v-model，props传进来的数据原则上是只读的 -->
       <!-- <input v-model="listItem.isChecked" type="checkbox"> -->
       <span v-show="!listItem.isEdit">{{ listItem.title }}</span>
-      <input v-show="listItem.isEdit" type="text" :value="listItem.title" @blur="handleBlur(listItem, $event)">
+      <input v-show="listItem.isEdit" ref="inputTitle" type="text" :value="listItem.title" @blur="handleBlur(listItem, $event)">
     </label>
     <button class="btn btn-danger" @click="handleDelete(listItem.id)">删除</button>
     <button v-show="!listItem.isEdit" class="btn btn-edit" @click="handleEdit(listItem)">编辑</button>
@@ -36,6 +36,9 @@ export default {
       } else {
         this.$set(listItem, 'isEdit', true)
       }
+      this.$nextTick(function() {
+        this.$refs.inputTitle.focus()
+      })
     },
     handleBlur(listItem, e) {
       listItem.isEdit = false
