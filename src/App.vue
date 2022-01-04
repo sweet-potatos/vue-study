@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <PubsubDemo />
+    <TodoListDemo />
   </div>
 </template>
 
 <script>
-import PubsubDemo from './study/pubsubDemo/PubsubDemo'
+import TodoListDemo from './study/todoListDemo/TodoListDemo'
 
 export default {
   name: 'App',
   components: {
-    PubsubDemo
+    TodoListDemo
   }
 }
 </script>

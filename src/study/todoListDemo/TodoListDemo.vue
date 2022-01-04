@@ -90,6 +90,17 @@ export default {
     background-color: #bd362f;
   }
 
+  .btn-edit {
+    color: #fff;
+    background-color: #498dda;
+    border: 1px solid #498dda;
+    margin-right: 10px;
+  }
+
+  .btn-edit:hover {
+    color: #fff;
+    background-color: #498dda;
+  }
   .btn:focus {
     outline: none;
   }
