@@ -1,5 +1,6 @@
 <template>
   <div class="animate-demo1">
+    <h2>demo1</h2>
     <button type="button" @click="changeIsShow">显示/隐藏</button>
     <transition appear>
       <div v-show="isShow" class="text">测试测试</div>
@@ -10,24 +11,28 @@
   </div>
 </template>
 <script>
+import { animateMixin } from './animateMixin'
+
 export default {
-  naem: 'AnimateDemo1',
-  data() {
-    return {
-      isShow: true
-    }
-  },
-  methods: {
-    changeIsShow() {
-      this.isShow = !this.isShow
-    }
-  }
+  name: 'AnimateDemo1',
+  mixins: [animateMixin]
+  // data() {
+  //   return {
+  //     isShow: true
+  //   }
+  // },
+  // methods: {
+  //   changeIsShow() {
+  //     this.isShow = !this.isShow
+  //   }
+  // }
 }
 </script>
 
 <style scoped lang="less">
 .animate-demo1 {
   padding: 10px;
+  margin-bottom: 30px;
 
   .text {
     width: 100%;

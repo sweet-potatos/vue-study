@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <AnimateDemo1 />
+    <AnimateDemo />
   </div>
 </template>
 
 <script>
-import AnimateDemo1 from './study/animateDemo/AnimateDemo1'
+import AnimateDemo from './study/animateDemo/AnimateDemo'
 
 export default {
   name: 'App',
   components: {
-    AnimateDemo1
+    AnimateDemo
   }
 }
 </script>
