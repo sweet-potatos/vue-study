@@ -264,3 +264,7 @@ lang指定用那种预编译语言，如果不写<style>里面默认写css
 
   (3).备注: 若有多个元素需要过度，则需要使用: ```<transition-group>```，且每个元素都要指定```key```值
 
+  参考链接:
+  1.https://cn.vuejs.org/v2/guide/transitions.html
+  2.https://animate.style/
+
