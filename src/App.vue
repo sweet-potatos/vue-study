@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <AnimateDemo />
+    <ProxyDemo />
   </div>
 </template>
 
 <script>
-import AnimateDemo from './study/animateDemo/AnimateDemo'
+import ProxyDemo from './study/proxyDemo/ProxyDemo'
 
 export default {
   name: 'App',
   components: {
-    AnimateDemo
+    ProxyDemo
   }
 }
 </script>
