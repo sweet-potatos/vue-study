@@ -313,3 +313,98 @@ lang指定用那种预编译语言，如果不写<style>里面默认写css
   说明:
     1.优点: 可以配置多个代理，且可以灵活的控制请求是否走代理
     2.缺点: 配置略微繁琐，请求资源时必须加前缀
+
+
+## 插槽
+1.作用: 让父组件可以向子组件指定位置插入html结构，也是一种组件间通信的方式，适用于 <font color=red>父组件 ===> 子组件</font>
+
+2.分类: 默认插槽、具名插槽、作用域插槽
+
+3.使用方式:
+  (1).默认插槽
+   ```javascript
+    父组件中:
+    <DefaultSlotDemo1 title="食品分类">
+      <div>html结构</div>
+    </DefaultSlotDemo1>
+
+    子组件中:
+    <template>
+      <div class="default-slot-demo">
+        <!-- 定义默认插槽 -->
+        <slot>插槽默认内容...</slot>
+      </div>
+    </template>
+  ```
+
+  (2).具名插槽
+   ```javascript
+    父组件中:
+    <NameSlotDemo1 title="电影分类">
+      <!-- 2.6版本新写法 -->
+      <template v-slot:center>
+        <div>html结构</div>
+      </template>
+      <!-- 旧的写法 -->
+      <template slot="footer">
+        <div>html结构</div>
+      </template>
+    </NameSlotDemo1>
+
+    子组件中:
+    <template>
+      <div class="name-slot-demo">
+        <slot name="center">插槽默认内容...</slot>
+        <slot name="footer">插槽默认内容...</slot>
+      </div>
+    </template>
+  ```
+
+  (3).作用域插槽
+  1.理解: <font color=red>数据在组件自身，但根据数据生成的结构需要组件的使用者来决定。</font>(数据在子组件中，但使用数据所遍历出来的结构由父组件决定)
+
+  2.具体代码:
+  ```javascript
+    父组件中:
+     <ScopeSlotDemo1 title="游戏分类">
+        <template scope="scopeData">
+          <ul>
+            <li v-for="(item, index) in scopeData.games" :key="index">
+              {{ item }}
+            </li>
+          </ul>
+        </template>
+      </ScopeSlotDemo1>
+      <ScopeSlotDemo1 title="游戏分类">
+        <template scope="scopeData">
+          <ol>
+            <li v-for="(item, index) in scopeData.games" :key="index">
+              {{ item }}
+            </li>
+          </ol>
+          {{ scopeData.msg }}
+        </template>
+      </ScopeSlotDemo1>
+
+    子组件中:
+    <template>
+      <div class="scope-slot-demo">
+        <h3>{{ title }}</h3>
+        <slot :games="games" msg="hello" />
+      </div>
+    </template>
+
+    <script>
+
+    export default {
+      name: 'ScopeSlotDemo1',
+      props: ['title'],
+      data() {
+        return {
+          games: ['海岛奇兵', '王者荣耀', '荒野行动', '英雄联盟']
+        }
+      }
+    }
+    </script>
+  ```
+
