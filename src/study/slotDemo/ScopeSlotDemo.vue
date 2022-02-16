@@ -3,7 +3,7 @@
     <h3>作用域插槽</h3>
     <div class="box">
       <ScopeSlotDemo1 title="游戏分类">
-        <template scope="scopeData">
+        <template slot-scope="scopeData">
           <ul>
             <li v-for="(item, index) in scopeData.games" :key="index">
               {{ item }}
@@ -12,7 +12,7 @@
         </template>
       </ScopeSlotDemo1>
       <ScopeSlotDemo1 title="游戏分类">
-        <template scope="scopeData">
+        <template slot-scope="scopeData">
           <ol>
             <li v-for="(item, index) in scopeData.games" :key="index">
               {{ item }}
@@ -22,7 +22,7 @@
         </template>
       </ScopeSlotDemo1>
       <ScopeSlotDemo1 title="游戏分类">
-        <template scope="scopeData">
+        <template slot-scope="scopeData">
           <h4 v-for="(item, index) in scopeData.games" :key="index">{{ item }}</h4>
         </template>
       </ScopeSlotDemo1>

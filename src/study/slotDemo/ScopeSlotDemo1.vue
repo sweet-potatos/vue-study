@@ -9,7 +9,13 @@
 
 export default {
   name: 'ScopeSlotDemo1',
-  props: ['title'],
+  props: {
+    'title': {
+      type: String, // 类型
+      required: true, // 必要性
+      default: '游戏分类' // 默认值
+    }
+  },
   data() {
     return {
       games: ['海岛奇兵', '王者荣耀', '荒野行动', '英雄联盟']
