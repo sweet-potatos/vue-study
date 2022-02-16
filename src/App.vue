@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <ScopeSlotDemo />
+    <AddCountDemo />
   </div>
 </template>
 
 <script>
-import ScopeSlotDemo from './study/slotDemo/ScopeSlotDemo'
+import AddCountDemo from './vuexStudy/AddCountDemo'
 
 export default {
   name: 'App',
   components: {
-    ScopeSlotDemo
+    AddCountDemo
   }
 }
 </script>

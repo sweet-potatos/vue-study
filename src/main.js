@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store'
 
 // import plugin from './utils/plugin'
 
@@ -11,5 +12,6 @@ new Vue({
   beforeCreate() {
     Vue.prototype.$bus = this
   },
-  render: h => h(App)
+  render: h => h(App),
+  store
 }).$mount('#app')
