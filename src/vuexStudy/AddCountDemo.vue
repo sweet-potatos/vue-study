@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>当前的合为{{ $store.state.sum }}</h2>
+    <h2>放大后的合为{{ $store.getters.bigSum }}</h2>
     <select v-model="count">
       <option :value="1">1</option>
       <option :value="2">2</option>

@@ -33,10 +33,18 @@ const mutations = {
   }
 }
 
+const getters = {
+  bigSum(state) {
+    const { sum } = state
+    return sum * 10
+  }
+}
+
 const store = new Vuex.Store({
   state,
   actions,
-  mutations
+  mutations,
+  getters
 })
 
 export default store
