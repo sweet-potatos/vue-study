@@ -111,3 +111,46 @@
   export default store
   ```
 3.组件中读取数据: <code>\$store.getters.bigSum</code>
+
+#### 6.四个map方法的使用
+1.mapState方法: 用于映射state中的数据为计算属性
+```javascript
+   computed: {
+    // 借助mapState生成计算属性，从state中读取数据(对象写法)
+    ...mapState({ sum: 'sum' }),
+
+    // 借助mapState生成计算属性，从state中读取数据(数组写法)
+    ...mapState(['sum']),
+  },
+  ```
+2.mapGetters方法: 用于映射getters中的数据为计算属性
+```javascript
+  computed: {
+    // 借助mapGetters生成计算属性，从state中读取数据(对象写法)
+    ...mapGetters({ bigSum: 'bigSum' })
+
+    // 借助mapGetters生成计算属性，从state中读取数据(数组写法)
+    ...mapGetters(['bigSum'])
+  },
+  ```
+3.mapActions方法: 用于生成与mapActions对话的方法，即: 包含<code>\$store.dispatch(xxx)</code>的函数
+```javascript
+   methods: {
+    // 借助mapActions生成actions里面的方法(对象形式)
+    ...mapActions({ incrementOdd: 'incrementOdd', incrementWait: 'incrementWait' }),
+
+    // 借助mapActions生成actions里面的方法(数组形式)
+    ...mapActions(['incrementOdd', 'incrementWait']),
+  }
+  ```
+4.mapMutations方法: 用于生成与mutations对话的方法，即: 包含<code>\$store.commit(xxx)</code>的函数
+```javascript
+   methods: {
+    // 借助mapMutations生成mutations里面的方法(对象形式)
+    ...mapMutations({ increment: 'INCREMENT', decrement: 'DECREMENT' }),
+
+    // 借助mapMutations生成mutations里面的方法(数组形式)
+    ...mapMutations(['INCREMENT', 'DECREMENT']),
+  }
+  ```
+  备注: mapActions与mapMutations使用时，若需要传递参数: 在模板中绑定事件时传递好参数，否则参数是事件对象
