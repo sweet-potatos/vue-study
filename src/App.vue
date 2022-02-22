@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <AddCountDemo />
+    <MapDemo />
   </div>
 </template>
 
 <script>
-import AddCountDemo from './vuexStudy/AddCountDemo'
+import MapDemo from './vuexStudy/MapDemo'
 
 export default {
   name: 'App',
   components: {
-    AddCountDemo
+    MapDemo
   }
 }
 </script>
