@@ -1,9 +1,9 @@
 ## vuex(类似dva.js)
 #### 1.概念:
-  &emsp;&emsp; 在Vue中实现集中状态(数据)管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理(读/写)，也是一种组件间通信的方式，且适用于任意组件通信
+  在Vue中实现集中状态(数据)管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理(读/写)，也是一种组件间通信的方式，且适用于任意组件通信
 
 #### 2.何时使用?
-  &emsp;&emsp; 多个组件需要共享数据时
+ 多个组件需要共享数据时
 
 #### 3.搭建vuex环境
   1.创建文件 <code>src/store/index.js</code>
@@ -85,9 +85,9 @@
   ```
 
 #### 4.基本使用
-  &emsp;&emsp; 1.创建文件 <code>src/store/index.js</code>
-  &emsp;&emsp; 2.组件中读取Vuex的数据: <code>\$store.state.sum</code>
-  &emsp;&emsp; 3.组件中修改Vuex的数据: <code>\$store.dispatch('actions中的方法名', 数据)</code>，<code>$store.commit('mutations中的方法名', 数据)</code>
+  1.创建文件 <code>src/store/index.js</code>
+  2.组件中读取Vuex的数据: <code>\$store.state.sum</code>
+  3.组件中修改Vuex的数据: <code>\$store.dispatch('actions中的方法名', 数据)</code>，<code>$store.commit('mutations中的方法名', 数据)</code>
 
 #### 5.getters的使用
 1.概念: 当state中的数据需要经过加工后再使用时，可以使用getters加工，相当于vuex中计算属性
@@ -154,3 +154,87 @@
   }
   ```
   备注: mapActions与mapMutations使用时，若需要传递参数: 在模板中绑定事件时传递好参数，否则参数是事件对象
+
+#### 7.模块化+命名空间
+1.目的: 让代码更好维护，让多种数据分类更加明确
+2.修改<code>store.js</code>
+```javascript
+   const moduleA = {
+    namespaced: true, // 开启命名空间
+    state() {
+      return { ... }
+    },
+    getters: {
+      bigSum(state) {
+        const { sum } = state
+        return sum * 10
+      }
+    },
+    actions: { ... },
+    mutations: { ... }
+  }
+
+  const moduleB = {
+    namespaced: true, // 开启命名空间
+    state() {
+      return { ... }
+    },
+    getters: {
+      bigSum(state) {
+        const { sum } = state
+        return sum * 10
+      }
+    },
+    actions: { ... },
+    mutations: { ... }
+  }
+
+  const store = new Vuex.Store({
+    modules: {
+      moduleA,
+      moduleB
+    }
+  })
+
+  export default store
+  ```
+3.开启命名空间后，组件中读取state数据:
+```javascript
+  // 自己直接读取
+  this.$store.state.addCountModule.sum
+
+  // 借助mapState方法读取
+  ...mapState('addCountModule', { sum: 'sum' })  // 对象方式
+
+  ...mapState('addCountModule', ['sum'])  // 数组方式
+  ```
+4.开启命名空间后，组件中读取getters数据:
+```javascript
+  // 自己直接读取
+  this.$store.getters['addCountModule/bigSum']
+
+  // 借助mapGetters方法读取
+  ...mapGetters('addCountModule', { bigSum: 'bigSum' })  // 对象方式
+
+  ...mapGetters('addCountModule', ['bigSum'])  // 数组方式
+  ```
+5.开启命名空间后，组件中调用dispatch:
+```javascript
+  // 直接使用dispatch
+  this.$store.dispatch('personMoudle/addSentence')
+
+  // 借助mapActions
+   ...mapActions('addCountModule', { incrementOdd: 'incrementOdd', incrementWait: 'incrementWait' }),  // 对象方式
+
+   ...mapActions('addCountModule', [ 'incrementOdd', 'incrementWait' ]),  // 数组方式
+  ```
+6.开启命名空间后，组件中调用commit:
+```javascript
+  // 直接使用commit
+   this.$store.commit('personMoudle/ADD_PERSON', addObj)
+
+  // 借助mapMutations
+  ...mapMutations('addCountModule', { increment: 'INCREMENT', decrement: 'DECREMENT' })  // 对象方式
+
+  ...mapMutations('addCountModule', ['INCREMENT', 'DECREMENT'])  // 数组方式
+  ```
