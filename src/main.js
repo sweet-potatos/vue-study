@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store/modulesDemo'
+import router from './router'
 
 // import plugin from './utils/plugin'
 
@@ -13,5 +14,6 @@ new Vue({
     Vue.prototype.$bus = this
   },
   render: h => h(App),
-  store
+  store,
+  router
 }).$mount('#app')

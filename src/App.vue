@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <ModulesDemo />
+    <LinkDemo />
   </div>
 </template>
 
 <script>
-import ModulesDemo from './vuexStudy/ModulesDemo'
+import LinkDemo from './vueRouteStudy/linkDemo/LinkDemo'
 
 export default {
   name: 'App',
   components: {
-    ModulesDemo
+    LinkDemo
   }
 }
 </script>
